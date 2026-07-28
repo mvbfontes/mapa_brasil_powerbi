@@ -10,13 +10,13 @@
    https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_popula%C3%A7%C3%A3o
    ```
 
-4. Clique em **Usar a primeira linha como cabeçalho**.
+4. Selecione a tabela **"Unidades federativas do Brasil por população"** que apresenta os dados das populações por estado e clique em **Transformar dados**.
 5. Clique em **Remover Linhas Superiores** e informe o valor **1**.
 6. Clique em **Remover Linhas Inferiores** e informe o valor **1**.
 7. Crie uma **Coluna Personalizada** chamada **Populacao** utilizando a fórmula abaixo:
 
    ```powerquery
-   Text.Remove([#"População[3][4]"], {" "})
+   Int64.From(Text.Select([#"População[3][4]"], {"0".."9"}))
    ```
 
 8. Selecione as colunas **Unidade federativa** e **Populacao**.
