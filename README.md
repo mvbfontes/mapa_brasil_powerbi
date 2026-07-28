@@ -42,3 +42,68 @@
 
 > [!NOTE]
 > O Power BI possui uma opção nativa chamada **Brasil: estados** em **Tipo de mapa**. No entanto, para utilizá-la corretamente, os nomes dos estados na coluna de localização devem estar **sem acentos**.
+
+---
+
+<br>
+
+# Criando um mapa de municípios do estado do Rio de Janeiro no Power BI
+
+## Importar e transformar os dados de população dos municípios do estado do Rio de Janeiro (Wikipédia)
+
+1. Abra o **Power BI Desktop**.
+2. Clique em **Obter dados** > **Web**.
+3. Cole o seguinte endereço da Wikipédia:
+
+   ```
+   https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Rio_de_Janeiro_por_popula%C3%A7%C3%A3o
+   ```
+
+4. Selecione a tabela **"Tabela 5"** que apresenta os dados das populações por estado e clique em **Transformar dados**.
+5. Crie uma **Coluna Personalizada** chamada **Populacao** utilizando a fórmula abaixo:
+
+   ```powerquery
+   Int64.From(Text.Select([Column3], {"0".."9"}))
+   ```
+
+6. Renomeie a coluna **Column2** para **Cidade**;
+7. Selecione as colunas **Cidade** e **Populacao**.
+8. Clique em **Remover Outras Colunas**.
+9. Renomeie a consulta de **Tabela 5** para **RJ Populacao**
+
+---
+
+## Acrescentar os dados de código do IBGE dos municípios do estado do Rio de Janeiro (Wikipédia)
+
+10. Abra o **Power BI Desktop**.
+11. Clique em **Obter dados** > **Web**.
+12. Cole o seguinte endereço da Wikipédia:
+
+   ```
+   https://pt.wikipedia.org/wiki/Lista_de_munic%C3%ADpios_do_Rio_de_Janeiro
+   ```
+
+13. Selecione a tabela **"Tabela 2"** que apresenta os dados dos códigos do IBGE por município e clique em **Transformar dados**.
+14. Renomeie a tabela de para **RJ Código IBGE**
+15. Volte para a consulta **RJ Populacao** e clique no botão **Mesclar consultas**.
+16. Selecione as colunas **"Cidade"** de **RJ Populacao** e **"Municipio"** de **RJ Código IBGE**.
+17. Mantenha o tipo de junção **Externa esquerda**.
+18. Clique na opção **Usar a correspondência difusa para executar a mesclagem**.
+19. Na tabela mesclada, clique na seta e selecione apenas a coluna **CódigoIBGE**.
+
+## Importar o arquivo TopoJSON e criar o mapa dos estados
+
+1. No **Power BI Desktop**, adicione o visual **Mapa de formas (Shape Map)**.
+2. Arraste a coluna **Populacao** para **Saturação da cor**.
+3. Arraste a coluna **CódigoIBGE** para **Localização**.
+4. Abra **Formatar visual**.
+5. Em **Configurações do mapa**, altere **Tipo de mapa** para **Mapa personalizado**.
+6. Adicione o arquivo **`33.json`**, disponível na pasta **Mapas JSON** deste diretório.
+7. Em **Cores** > **Saturação da cor**, configure as cores e os valores para representar os menores e maiores valores de população.
+
+---
+
+> [!NOTE]
+> Caso você queira criar o mapa de municípios de outro estado busque pela páginas da Wikipédia relativa ao seu estado e utilize o seguinte diretório do GitHub para encontrar o arquivo de mapa correspondente do estado: https://github.com/arthurwallace/TopoJsonBrasil
+
+---
