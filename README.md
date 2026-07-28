@@ -1,5 +1,9 @@
 # Criando um mapa de estados do Brasil no Power BI
 
+<p align="center">
+  <img src="Imagens/mapa_estados_brasil.png" alt="Mapa de estados do Brasil" width="150">
+</p>
+
 ## Importar e transformar os dados de população dos estados (Wikipédia)
 
 1. Abra o **Power BI Desktop**.
