@@ -49,6 +49,10 @@
 
 # Criando um mapa de municípios do estado do Rio de Janeiro no Power BI
 
+<p align="center">
+  <img src="Imagens/mapa_municipios_rj.png" alt="Mapa de municípios do Rio de Janeiro" width="150">
+</p>
+
 ## Importar e transformar os dados de população dos municípios do estado do Rio de Janeiro (Wikipédia)
 
 1. Abra o **Power BI Desktop**.
@@ -91,7 +95,7 @@
 18. Clique na opção **Usar a correspondência difusa para executar a mesclagem**.
 19. Na tabela mesclada, clique na seta e selecione apenas a coluna **CódigoIBGE**.
 
-## Importar o arquivo TopoJSON e criar o mapa dos estados
+## Importar o arquivo TopoJSON e criar o mapa dos municípios
 
 1. No **Power BI Desktop**, adicione o visual **Mapa de formas (Shape Map)**.
 2. Arraste a coluna **Populacao** para **Saturação da cor**.
@@ -104,6 +108,8 @@
 ---
 
 > [!NOTE]
-> Caso você queira criar o mapa de municípios de outro estado busque pela páginas da Wikipédia relativa ao seu estado e utilize o seguinte diretório do GitHub para encontrar o arquivo de mapa correspondente do estado: https://github.com/arthurwallace/TopoJsonBrasil
+> Este exemplo utiliza o estado do Rio de Janeiro. Para criar mapas de municípios de outros estados, obtenha os dados de população na página correspondente da Wikipédia e utilize o arquivo **TopoJSON** do estado desejado disponível no repositório **TopoJsonBrasil**:
+>
+> https://github.com/arthurwallace/TopoJsonBrasil
 
 ---
